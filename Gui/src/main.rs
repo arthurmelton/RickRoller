@@ -26,7 +26,7 @@ fn main() {
 
     // Instantiate vlc instance and media player
     let instance = Instance::with_args(Some(args)).unwrap();
-    let md = Media::new_path(&instance, "../Images/Rick Astley - Never Gonna Give You Up (Official Music Video)-dQw4w9WgXcQ.mkv").unwrap();
+    let md = Media::new_location(&instance, "https://github.com/AMTitan/RickRoller/raw/master/Images/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up%20(Official%20Music%20Video)-dQw4w9WgXcQ.mkv").unwrap();
     let mdp = MediaPlayer::new(&instance).unwrap();
     mdp.set_media(&md);
 
