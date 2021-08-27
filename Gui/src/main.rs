@@ -1,4 +1,4 @@
-use fltk::{enums::Color, prelude::*, *};
+use fltk::{enums::Color, prelude::*, *, window::*};
 use vlc::*;
 use std::thread;
 
@@ -9,10 +9,11 @@ pub enum Message {
 }
 fn main() {
     let app = app::App::default().with_scheme(app::AppScheme::Gtk);
-    let mut win = window::Window::new(100, 100, 800, 600, "Media Player");
+    let mut win = Window::default().with_label("Rick Roll").with_size(400,300);
+    win.make_resizable(true);
 
     // Create inner window to act as embedded media player
-        let mut vlc_win = window::Window::new(100, 100, 800, 600, "");
+    let mut vlc_win = window::Window::new(0, 0, 400, 300, "");
     vlc_win.end();
     vlc_win.set_color(Color::Black);
 
@@ -50,6 +51,6 @@ fn main() {
     mdp.set_key_input(false);
     mdp.set_mouse_input(false);
     mdp.play().unwrap();
-    thread::sleep(::std::time::Duration::from_secs(10));
+    app.run().unwrap();
 
 }
